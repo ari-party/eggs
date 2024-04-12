@@ -4,10 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-04-11T01:31:04+02:00",
+    "exported_at": "2024-04-12T17:40:38+02:00",
     "name": "Navidrome",
     "author": "pterodactyl@astrid.email",
-    "description": "Navidrome is a self-hosted, open source music server and streamer. It gives you freedom to listen to your music collection from any browser or mobile device.",
+    "description": "Navidrome is a self-hosted, open source music server and streamer. It gives you freedom to listen to your music collection from any browser or mobile device.\r\n\r\nSource: https:\/\/github.com\/ari-party\/eggs\/blob\/main\/navidrome",
     "features": null,
     "docker_images": {
         "ghcr.io\/parkervcp\/yolks:debian": "ghcr.io\/parkervcp\/yolks:debian"
@@ -22,7 +22,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n\r\ncd \/mnt\/server\r\n\r\ncat > navidrome.toml << EOF\r\nMusicFolder = \"\/home\/container\/library\/\"\r\nDataFolder = \"\/home\/container\/data\/\"\r\nPort = 8080\r\nEOF\r\necho -e \"\\Created base configuration file\\n\"\r\n\r\nmkdir .\/library\r\nmkdir .\/data\r\nmkdir .\/navidrome\r\n\r\necho -e \"\\nUpdating\\n\"\r\napt update\r\n\r\necho -e \"\\Installing dependencies\\n\"\r\napt install vim ffmpeg wget -y -qq\r\n\r\nwget https:\/\/github.com\/navidrome\/navidrome\/releases\/download\/v0.51.1\/navidrome_0.51.1_linux_amd64.tar.gz -O Navidrome.tar.gz\r\ntar -xvzf Navidrome.tar.gz -C \/mnt\/server\/navidrome\r\nrm Navidrome.tar.gz\r\n\r\necho -e \"\\nServer successfully installed\\n\"",
+            "script": "#!\/bin\/bash\r\n\r\ncd \/mnt\/server\r\n\r\ncat > navidrome.toml << EOF\r\nMusicFolder = \"\/home\/container\/library\/\"\r\nDataFolder = \"\/home\/container\/data\/\"\r\nPort = 8080\r\nEOF\r\n\r\nmkdir .\/library\r\nmkdir .\/data\r\nmkdir .\/navidrome\r\n\r\napt update\r\n\r\napt install ffmpeg wget -y -qq\r\n\r\nwget https:\/\/github.com\/navidrome\/navidrome\/releases\/download\/v0.51.1\/navidrome_0.51.1_linux_amd64.tar.gz -O Navidrome.tar.gz\r\ntar -xvzf Navidrome.tar.gz -C \/mnt\/server\/navidrome\r\nrm Navidrome.tar.gz\r\n\r\necho -e \"\\nServer successfully installed\\n\"",
             "container": "ghcr.io\/pterodactyl\/installers:debian",
             "entrypoint": "\/bin\/bash"
         }
