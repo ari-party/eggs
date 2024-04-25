@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-04-25T16:10:15+02:00",
+    "exported_at": "2024-04-25T16:30:54+02:00",
     "name": "Ollama",
     "author": "pterodactyl@astrid.email",
     "description": "Get up and running with Llama 3, Mistral, Gemma, and other large language models.\r\n\r\nSource: https:\/\/github.com\/ari-party\/eggs\/blob\/main\/ollama",
@@ -22,7 +22,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n\r\n\r\ncat > \/mnt\/server\/.env << EOF\r\nOLLAMA_HOST=\r\nOLLAMA_MODELS=\/home\/container\/models\r\nEOF\r\n\r\nmkdir \/mnt\/server\/models\r\n\r\ncurl -fsSL https:\/\/ollama.com\/install.sh | sh\r\n\r\nmv \/usr\/local\/bin\/ollama \/mnt\/server\/ollama\r\n\r\necho -e \"\\nServer successfully installed\\n\"",
+            "script": "#!\/bin\/bash\r\n\r\n\r\ncat > \/mnt\/server\/.env << EOF\r\nOLLAMA_HOST=\r\nOLLAMA_MODELS=\/home\/container\/models\r\nOLLAMA_TMPDIR=\/home\/container\/tmp\r\nEOF\r\n\r\nmkdir \/mnt\/server\/models \/mnt\/server\/tmp\r\n\r\ncurl -fsSL https:\/\/ollama.com\/install.sh | sh\r\n\r\nmv \/usr\/local\/bin\/ollama \/mnt\/server\/ollama\r\n\r\necho -e \"\\nServer successfully installed\\n\"",
             "container": "ghcr.io\/pterodactyl\/installers:debian",
             "entrypoint": "\/bin\/bash"
         }
